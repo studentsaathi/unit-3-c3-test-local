@@ -1,0 +1,13 @@
+#navbar{
+    background-color: aqua;
+    display: flex;
+    gap: 500px;
+}
+#voucher{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    
+}
+#voucher>div{
+ margin-top: 20px;
+}

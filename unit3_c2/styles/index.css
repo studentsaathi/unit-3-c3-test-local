@@ -1,0 +1,21 @@
+form{
+    border: 2px solid ;
+    height: 330px;
+    width: 250px;
+    margin: auto;
+    background-color: bisque;
+}
+input{
+    margin-top: 10px;
+    margin-left: 20px;
+    height: 30px;
+
+}
+#navbar{
+    background-color: aqua;
+    height: 70px;
+    width: auto;
+}
+a{
+    margin-left: 1000px;
+}
