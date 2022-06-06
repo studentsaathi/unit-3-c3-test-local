@@ -4,3 +4,8 @@
     /* gap: 500px; */
     text-align: center;
 }
+#purchased_vouchers{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    margin-top: 20px;
+}

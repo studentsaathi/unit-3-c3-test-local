@@ -6,15 +6,18 @@ user.map(function(el,index){
 
 
 let data=JSON.parse(localStorage.getItem("purchase"))
-
-
-let purchased_vouchers=document.getElementById("purchased_vouchers")
+data.map(function(ell,index){
+    let purchased_vouchers=document.getElementById("purchased_vouchers")
 let div=document.createElement("div")
 let name=document.createElement("h2")
-name.innerText=data[0];
+name.innerText=ell.name
 let image=document.createElement("img")
-image.src=data[1];
+image.src=ell.image
 let price=document.createElement("h2")
-price.innerText=`price :-${data[2]}`
+price.innerText=`price :-${ell.price}`
 div.append(image,name,price)
 purchased_vouchers.append(div)
+
+})
+
+

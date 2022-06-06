@@ -1,8 +1,8 @@
 let user=JSON.parse(localStorage.getItem("user"))
-user.map(function(el,index){
+ user.map(function(el,index){
     let wallet_balance=document.getElementById("wallet_balance")
-    wallet_balance.innerText=el.amount;
-   // var totalbal=el.amount;
+   wallet_balance.innerText=el.amount;
+   //var totalbal=el.amount;
     
 })
 
@@ -12,7 +12,9 @@ async function getData(){
     try{
         let res=await fetch(url)
         let allvau=await res.json()
-        console.log(allvau[0])
+       // console.log(allvau[0])
+        
+        // let aaaa=`allvau[0]`
         showdata(allvau[0])
 
     }
@@ -23,57 +25,58 @@ async function getData(){
 
 }
 getData()
-let purchaseee=JSON.parse(localStorage.getItem("purchase")) ||[]
+let pur=JSON.parse(localStorage.getItem("purchase")) ||[]
+
+
 async function showdata(data){
-    for(var i=0;i<data.vouchers.length;i++){
-
-        let voucherdiv=document.getElementById("voucher")
-        let div=document.createElement("div")
-        let name=document.createElement("h2")
-        name.innerText=data.vouchers[i].name
-        let image=document.createElement("img")
-        image.src=data.vouchers[i].image;
-        let price=document.createElement("h2")
-        price.innerText=data.vouchers[i].price;
-
-        let btn=document.createElement("button")
-        btn.innerText="Buy"
-        btn.addEventListener("click",function(){
-            addVaucher(name,image,price)
-        })
-
-    
-        div.append(image,name,price,btn)
-        voucherdiv.append(div)
-
-    }
-    //dataaa.forEach(function(ell){
+    let dataff=data.vouchers
+   dataff.forEach(function(ell){
+    let voucherdiv=document.getElementById("voucher")
+                let div=document.createElement("div")
+                let name=document.createElement("h2")
+                name.innerText=ell.name
+                let image=document.createElement("img")
+                image.src=ell.image;
+                let price=document.createElement("h2")
+                price.innerText=ell.price
         
-        
+                let btn=document.createElement("button")
+                btn.innerText="Buy"
+                btn.addEventListener("click",function(){
+                    addVaucher(ell)
+                })
+                 
+                div.append(image,name,price,btn)
+                voucherdiv.append(div)
+      //      console.log(ell.name)
 
-    
-   
-    
+
+   })
+ 
+
 
 }
-//showdata(data)
 
-function addVaucher(name,image,price){
-    console.log(name,image,price)
-    purchaseee.push(name.innerText,image.src,price.innerText)
-    localStorage.setItem("purchase",JSON .stringify(purchaseee))
-    if(user.amount<price.innerText){
+
+async function addVaucher(ell){
+    //console.log(ell)
+    //localStorage.setItem("")
+    pur.push(ell)
+    
+   
+    if(user.amount<ell.price){
         alert("Your Balance low")
     }
     else
     {
         alert("You yor perchage") 
+        localStorage.setItem("purchase",JSON .stringify(pur))
+        //var total=(el.amount)-(ell.price)
+        //localStorage.setItem("user",JSON.stringify("amount",total))
         
 
     }
 
 
 }
-
-
 
